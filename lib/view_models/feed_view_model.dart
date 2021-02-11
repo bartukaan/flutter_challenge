@@ -24,10 +24,9 @@ class FeedViewModel with ChangeNotifier implements FeedBase {
     notifyListeners();
   }
 
-
   FeedViewModel() {
     fetchState = ViewState.Initial;
-    _feedElement = List<FeedElement>();
+    _feedElement = <FeedElement>[];
   }
 
   @override
@@ -35,13 +34,10 @@ class FeedViewModel with ChangeNotifier implements FeedBase {
     try {
       _feedElement = await _feedRepository.fetchList(page);
     } catch (e) {
-     fetchState = ViewState.Error;
+      fetchState = ViewState.Error;
     } finally {
       fetchState = ViewState.Success;
     }
     return _feedElement;
   }
-
-
-
 }

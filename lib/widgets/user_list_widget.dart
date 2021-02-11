@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_challenge/models/feed_model.dart';
 import 'package:flutter_challenge/screens/user_detail_screen.dart';
+import 'package:jiffy/jiffy.dart';
 class UserList extends StatelessWidget {
   final FeedElement userModel;
 
@@ -13,7 +14,7 @@ class UserList extends StatelessWidget {
         leading: Image.network(userModel.photo),
         title: Text(userModel.name, style:TextStyle(fontSize: 25.0)),
         subtitle: Text('${userModel.followerCount} FOLLOWERS' ),
-        trailing: Text('2 day ago',style: TextStyle(color: Colors.blue),),
+        trailing: Text('${Jiffy(userModel.createdAt, "yyyy-MM-dd").fromNow()}',style: TextStyle(color: Colors.blue),),
       ),
     );;
   }

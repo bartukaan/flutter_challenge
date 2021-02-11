@@ -10,19 +10,23 @@ class Feed {
     this.feedTotal,
   });
 
-
   List<FeedElement> feed;
   int feedTotal;
 
   factory Feed.fromJson(Map<String, dynamic> json) => Feed(
-    feed: json["feed"] == null ? null : List<FeedElement>.from(json["feed"].map((x) => FeedElement.fromJson(x))),
-    feedTotal: json["feedTotal"] == null ? null : json["feedTotal"],
-  );
+        feed: json['feed'] == null
+            ? null
+            : List<FeedElement>.from(
+                json['feed'].map((x) => FeedElement.fromJson(x))),
+        feedTotal: json['feedTotal'],
+      );
 
   Map<String, dynamic> toJson() => {
-    "feed": feed == null ? null : List<dynamic>.from(feed.map((x) => x.toJson())),
-    "feedTotal": feedTotal == null ? null : feedTotal,
-  };
+        'feed': feed == null
+            ? null
+            : List<dynamic>.from(feed.map((x) => x.toJson())),
+        'feedTotal': feedTotal,
+      };
 
   @override
   String toString() {
@@ -46,20 +50,20 @@ class FeedElement {
   String createdAt;
 
   factory FeedElement.fromJson(Map<String, dynamic> json) => FeedElement(
-    cover: json["cover"] == null ? null : json["cover"],
-    photo: json["photo"] == null ? null : json["photo"],
-    name: json["Name"] == null ? null : json["Name"],
-    followerCount: json["FollowerCount"] == null ? null : json["FollowerCount"],
-    createdAt: json["CreatedAt"] == null ? null : json["CreatedAt"],
-  );
+        cover: json['cover'],
+        photo: json['photo'],
+        name: json['Name'],
+        followerCount: json['FollowerCount'],
+        createdAt: json['CreatedAt'],
+      );
 
   Map<String, dynamic> toJson() => {
-    "cover": cover == null ? null : cover,
-    "photo": photo == null ? null : photo,
-    "Name": name == null ? null : name,
-    "FollowerCount": followerCount == null ? null : followerCount,
-    "CreatedAt": createdAt == null ? null : createdAt,
-  };
+        'cover': cover,
+        'photo': photo,
+        'Name': name,
+        'FollowerCount': followerCount,
+        'CreatedAt': createdAt,
+      };
 
   @override
   String toString() {

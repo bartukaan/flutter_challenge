@@ -24,54 +24,57 @@ class UserDetail extends StatelessWidget {
               ),
             ),
           ),
-          SliverToBoxAdapter(
-            child: Positioned(
-              top: MediaQuery.of(context).size.height * 0.05,
-              child: CircleAvatar(
-                backgroundColor: Colors.transparent,
-                radius: 70,
-                child: ClipOval(
-                  child: Image.network(
-                    userModel.photo,fit: BoxFit.cover
-                  ),
-                ),
-              ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Text(
-              userModel.name,
-              style: TextStyle(fontSize: 35,fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.only(top:18.0),
-              child: Text(
-                '${userModel.followerCount} Followers',
-                style: TextStyle(fontSize: 18),
-                textAlign: TextAlign.center,
-              ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Text(
-              userModel.createdAt,
-              style: TextStyle(fontSize: 18),
-              textAlign: TextAlign.center,
-            ),
-          ),
+          _buildProfileImage(context),
+          _buildUserName(),
+          _buildFollowersCount(),
+          _buildCreatedDate(),
         ],
       ),
     );
   }
-}
-/*
 
-Text(
-           userModel.name,
-           style: TextStyle(fontSize: 18),
-           textAlign: TextAlign.center,
-         ),
- */
+  SliverToBoxAdapter _buildProfileImage(BuildContext context) {
+    return SliverToBoxAdapter(
+      child: CircleAvatar(
+        backgroundColor: Colors.transparent,
+        radius: 70,
+        child: ClipOval(
+          child: Image.network(userModel.photo, fit: BoxFit.cover),
+        ),
+      ),
+    );
+  }
+
+  SliverToBoxAdapter _buildUserName() {
+    return SliverToBoxAdapter(
+      child: Text(
+        userModel.name,
+        style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
+        textAlign: TextAlign.center,
+      ),
+    );
+  }
+
+  SliverToBoxAdapter _buildFollowersCount() {
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: const EdgeInsets.only(top: 18.0),
+        child: Text(
+          '${userModel.followerCount} Followers',
+          style: TextStyle(fontSize: 18),
+          textAlign: TextAlign.center,
+        ),
+      ),
+    );
+  }
+
+  SliverToBoxAdapter _buildCreatedDate() {
+    return SliverToBoxAdapter(
+      child: Text(
+        userModel.createdAt,
+        style: TextStyle(fontSize: 18),
+        textAlign: TextAlign.center,
+      ),
+    );
+  }
+}
