@@ -13,7 +13,6 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,8 +23,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: ChangeNotifierProvider<FeedViewModel>(
-         create: (context) => getIt<FeedViewModel>(), child: HomeScreen(pageNumber: 1,)),
-         // create: (context) => FeedViewModel(), child: HomeScreen()),
+         create: (context) => getIt<FeedViewModel>(), child: HomeScreen()),
     );
   }
 }

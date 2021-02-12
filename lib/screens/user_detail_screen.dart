@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_challenge/models/feed_model.dart';
+import 'package:flutter_challenge/utilities/constants.dart';
 
 class UserDetail extends StatelessWidget {
   final FeedElement userModel;
@@ -16,15 +18,19 @@ class UserDetail extends StatelessWidget {
             floating: false,
             pinned: true,
             snap: false,
-            flexibleSpace: FlexibleSpaceBar(
-              centerTitle: true,
-              background: Image.network(
-                userModel.cover,
-                fit: BoxFit.cover,
-              ),
+            flexibleSpace: Stack(
+              children: [
+                FlexibleSpaceBar(
+                  centerTitle: true,
+                  background: userModel.cover != null ? Image.network(
+                    userModel.cover,
+                    fit: BoxFit.cover,
+                  ) : Image.network(userModel.photo,fit: BoxFit.cover,)
+                ),
+                _buildProfileImage(context),
+              ],
             ),
           ),
-          _buildProfileImage(context),
           _buildUserName(),
           _buildFollowersCount(),
           _buildCreatedDate(),
@@ -33,11 +39,15 @@ class UserDetail extends StatelessWidget {
     );
   }
 
-  SliverToBoxAdapter _buildProfileImage(BuildContext context) {
-    return SliverToBoxAdapter(
+  Container _buildProfileImage(BuildContext context) {
+    return Container(
+      transform: Matrix4.translationValues(
+          (MediaQuery.of(context).size.width - radius * 2) * 0.5,
+          MediaQuery.of(context).size.height * 0.34,
+          0.0),
       child: CircleAvatar(
         backgroundColor: Colors.transparent,
-        radius: 70,
+        radius: radius,
         child: ClipOval(
           child: Image.network(userModel.photo, fit: BoxFit.cover),
         ),
@@ -47,10 +57,13 @@ class UserDetail extends StatelessWidget {
 
   SliverToBoxAdapter _buildUserName() {
     return SliverToBoxAdapter(
-      child: Text(
-        userModel.name,
-        style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold),
-        textAlign: TextAlign.center,
+      child: Padding(
+        padding: EdgeInsets.only(top: radius),
+        child: Text(
+          userModel.name,
+          style: TextStyle(fontSize: constantSize * 2, fontWeight: FontWeight.bold),
+          textAlign: TextAlign.center,
+        ),
       ),
     );
   }
@@ -61,7 +74,7 @@ class UserDetail extends StatelessWidget {
         padding: const EdgeInsets.only(top: 18.0),
         child: Text(
           '${userModel.followerCount} Followers',
-          style: TextStyle(fontSize: 18),
+          style: TextStyle(fontSize: constantSize),
           textAlign: TextAlign.center,
         ),
       ),

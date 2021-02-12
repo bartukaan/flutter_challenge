@@ -7,3 +7,7 @@ final buttonTextStyle = TextStyle(
   fontFamily: 'OpenSans',
   fontSize: 25.0
 );
+
+final radius = 70.0;
+
+final constantSize = 18.0;
