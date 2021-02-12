@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_challenge/enums/view_state_enum.dart';
 import 'package:flutter_challenge/models/feed_model.dart';
 import 'package:flutter_challenge/repositories/feed_repository.dart';
@@ -17,8 +16,6 @@ class FeedViewModel with ChangeNotifier implements FeedBase {
   List<FeedElement> get feedElement => _feedElement;
 
   int totalFeedCount;
-
-
 
   ViewState _fetchState;
 

@@ -7,16 +7,16 @@ import 'package:http/http.dart' as http;
 import 'feed_base.dart';
 
 class FeedService implements FeedBase {
-  FeedViewModel feedViewModel = FeedViewModel();
 
   @override
   Future<List<FeedElement>> fetchList(int page) async {
+    var feedViewModel = FeedViewModel();
     final response = await http.get(ServiceUrls.fetchFeeds(page));
 
     if (response.body != null) {
       var result = jsonDecode(response.body);
 
-      feedViewModel.totalFeedCount = result['feedTotal'];
+     feedViewModel.totalFeedCount = result['feedTotal'];
       var data = (result['feed'])
           .map<FeedElement>((p) => FeedElement.fromJson(p))
           .toList();

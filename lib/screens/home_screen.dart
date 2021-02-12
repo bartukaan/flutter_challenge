@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_challenge/enums/view_state_enum.dart';
 import 'package:flutter_challenge/models/feed_model.dart';
 import 'package:flutter_challenge/utilities/constants.dart';
