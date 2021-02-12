@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
               _buildUserList(_feedViewModel.feedElement),
               _buildButtonBar(_feedViewModel.feedElement),
               Text(
-                'Total User: ${_feedViewModel.totalFeedCount.toString()}',
+                'Total User:${TotalFeed.count.toString()} ',
                 style: TextStyle(fontStyle: FontStyle.italic),
               ),
             ],
@@ -118,7 +118,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future _loadMoreUser() async {
     final _feedViewModel = Provider.of<FeedViewModel>(context, listen: false);
-    if (pageNumber <= (_feedViewModel.totalFeedCount / 10)) {
+    if (pageNumber <= ( TotalFeed.count / 10)) {
       pageNumber += 1;
 
       return await _feedViewModel.fetchList(pageNumber);

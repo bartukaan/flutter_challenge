@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter_challenge/models/feed_model.dart';
+import 'package:flutter_challenge/utilities/constants.dart';
 import 'package:flutter_challenge/utilities/service_urls.dart';
 import 'package:flutter_challenge/view_models/feed_view_model.dart';
 import 'package:http/http.dart' as http;
@@ -10,13 +11,13 @@ class FeedService implements FeedBase {
 
   @override
   Future<List<FeedElement>> fetchList(int page) async {
-    var feedViewModel = FeedViewModel();
+
     final response = await http.get(ServiceUrls.fetchFeeds(page));
 
     if (response.body != null) {
       var result = jsonDecode(response.body);
 
-     feedViewModel.totalFeedCount = result['feedTotal'];
+    TotalFeed.count = result['feedTotal'];
       var data = (result['feed'])
           .map<FeedElement>((p) => FeedElement.fromJson(p))
           .toList();

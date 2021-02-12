@@ -11,3 +11,8 @@ final buttonTextStyle = TextStyle(
 final radius = 70.0;
 
 final constantSize = 18.0;
+
+
+class TotalFeed{
+  static int count;
+}

@@ -15,8 +15,6 @@ class FeedViewModel with ChangeNotifier implements FeedBase {
 
   List<FeedElement> get feedElement => _feedElement;
 
-  int totalFeedCount;
-
   ViewState _fetchState;
 
   ViewState get fetchState => _fetchState;
