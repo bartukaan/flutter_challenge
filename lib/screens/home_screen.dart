@@ -50,7 +50,6 @@ class _HomeScreenState extends State<HomeScreen> {
               _buildUserList(_feedViewModel.feedElement),
               _buildButtonBar(_feedViewModel.feedElement),
               Text(
-                //'Total User:${TotalFeed.count.toString()} ',
                 'Total User:${_feed.feedTotal.toString()} ',
                 style: TextStyle(fontStyle: FontStyle.italic),
               ),

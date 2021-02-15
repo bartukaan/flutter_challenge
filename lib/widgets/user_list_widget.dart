@@ -6,17 +6,27 @@ import 'package:jiffy/jiffy.dart';
 class UserList extends StatelessWidget {
   final FeedElement userModel;
 
-  const UserList({Key key,@required this.userModel}) : super(key: key);
+  const UserList({Key key, @required this.userModel}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: ()  => Navigator.of(context).push(MaterialPageRoute(builder: (context) => UserDetail(userModel: userModel,))),
+      onTap: () => Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => UserDetail(
+            userModel: userModel,
+          ),
+        ),
+      ),
       child: ListTile(
         leading: Image.network(userModel.photo),
-        title: Text(userModel.name, style:TextStyle(fontSize: 25.0)),
-        subtitle: Text('${userModel.followerCount} FOLLOWERS' ),
-        trailing: Text('${Jiffy(userModel.createdAt, "yyyy-MM-dd").fromNow()}',style: TextStyle(color: Colors.blue),),
+        title: Text(userModel.name, style: TextStyle(fontSize: 25.0)),
+        subtitle: Text('${userModel.followerCount} FOLLOWERS'),
+        trailing: Text(
+          '${Jiffy(userModel.createdAt, "yyyy-MM-dd").fromNow()}',
+          style: TextStyle(color: Colors.blue),
+        ),
       ),
-    );;
+    );
   }
 }

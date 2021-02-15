@@ -24,7 +24,6 @@ class MyApp extends StatelessWidget {
       ),
       home: ChangeNotifierProvider<FeedViewModel>(
           create: (context) => getIt<FeedViewModel>(), child: HomeScreen()),
-      // create: (context) => FeedViewModel(), child: HomeScreen()),
     );
   }
 }

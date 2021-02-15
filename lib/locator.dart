@@ -7,7 +7,7 @@ import 'view_models/feed_view_model.dart';
 
 GetIt getIt = GetIt.instance;
 
-void setupLocator(){
+void setupLocator() {
   getIt.registerLazySingleton(() => FeedService());
   getIt.registerLazySingleton(() => FeedRepository());
   getIt.registerFactory(() => FeedViewModel());
