@@ -6,6 +6,8 @@ import 'package:flutter_challenge/view_models/feed_view_model.dart';
 import 'package:flutter_challenge/widgets/user_list_widget.dart';
 import 'package:provider/provider.dart';
 
+import '../locator.dart';
+
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -14,6 +16,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int pageNumber;
   final _scrollController = ScrollController();
+  final Feed _feed = getIt<Feed>();
 
   @override
   void initState() {
@@ -29,6 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     final _feedViewModel = Provider.of<FeedViewModel>(context);
     switch (_feedViewModel.fetchState) {
       case ViewState.Initial:
@@ -46,7 +50,8 @@ class _HomeScreenState extends State<HomeScreen> {
               _buildUserList(_feedViewModel.feedElement),
               _buildButtonBar(_feedViewModel.feedElement),
               Text(
-                'Total User:${TotalFeed.count.toString()} ',
+                //'Total User:${TotalFeed.count.toString()} ',
+                'Total User:${_feed.feedTotal.toString()} ',
                 style: TextStyle(fontStyle: FontStyle.italic),
               ),
             ],
@@ -118,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future _loadMoreUser() async {
     final _feedViewModel = Provider.of<FeedViewModel>(context, listen: false);
-    if (pageNumber <= ( TotalFeed.count / 10)) {
+    if (pageNumber <= ( _feed.feedTotal / 10)) {
       pageNumber += 1;
 
       return await _feedViewModel.fetchList(pageNumber);
