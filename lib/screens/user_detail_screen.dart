@@ -76,7 +76,7 @@ class UserDetail extends StatelessWidget {
   SliverToBoxAdapter _buildFollowersCount() {
     return SliverToBoxAdapter(
       child: Padding(
-        padding: const EdgeInsets.only(top: 18.0),
+        padding:  EdgeInsets.only(top: constantSize),
         child: Text(
           '${userModel.followerCount} Followers',
           style: TextStyle(fontSize: constantSize),
@@ -90,7 +90,7 @@ class UserDetail extends StatelessWidget {
     return SliverToBoxAdapter(
       child: Text(
         userModel.createdAt,
-        style: TextStyle(fontSize: 18),
+        style: TextStyle(fontSize: constantSize),
         textAlign: TextAlign.center,
       ),
     );

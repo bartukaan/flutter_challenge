@@ -10,6 +10,6 @@ GetIt getIt = GetIt.instance;
 void setupLocator() {
   getIt.registerLazySingleton(() => FeedService());
   getIt.registerLazySingleton(() => FeedRepository());
-  getIt.registerFactory(() => FeedViewModel());
   getIt.registerLazySingleton(() => Feed());
+  getIt.registerFactory(() => FeedViewModel());
 }
