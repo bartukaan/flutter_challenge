@@ -20,16 +20,17 @@ class UserDetail extends StatelessWidget {
             flexibleSpace: Stack(
               children: [
                 FlexibleSpaceBar(
-                    centerTitle: true,
-                    background: userModel.cover != null
-                        ? Image.network(
-                            userModel.cover,
-                            fit: BoxFit.cover,
-                          )
-                        : Image.network(
-                            userModel.photo,
-                            fit: BoxFit.cover,
-                          )),
+                  centerTitle: true,
+                  background: userModel.cover != null
+                      ? Image.network(
+                          userModel.cover,
+                          fit: BoxFit.cover,
+                        )
+                      : Image.network(
+                          userModel.photo,
+                          fit: BoxFit.cover,
+                        ),
+                ),
                 _buildProfileImage(context),
               ],
             ),
